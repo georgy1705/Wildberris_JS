@@ -20,7 +20,7 @@ const getGoods = () => {
                         class="goods-image">
                     <h3 class="goods-title">${good.name}</h3>
                     <p class="goods-description">${good.description}</p>
-                    <button class="button goods-card-btn add-to-cart" data-id="007">
+                    <button class="button goods-card-btn add-to-cart" data-id="${good.id}">
                         <span class="button-price">$${good.price}</span>
                     </button>
                 </div>
@@ -57,14 +57,14 @@ const getGoods = () => {
         })
     })
 
-    const viewAll = viewAll => {
-        viewAll.addEventListener('click', () => {
-            getData(category=All)
-        })
-    }
-
     if (localStorage.getItem('goods') && window.location.pathname == '/goods.html') {
         renderGood(JSON.parse(localStorage.getItem('goods')))
+    }
+
+    if (linkAll) {
+        linkAll.addEventListener('click', () => {
+            getData()
+        })
     }
 }
 
